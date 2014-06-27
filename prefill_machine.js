@@ -1,8 +1,3 @@
-var runBookmarklet = function() {
-
-
-/*==========  Code starts here, above is for demo to work inside CodePen  ==========*/
-
 (function(win, doc, $) {
 
   'use strict';
@@ -145,11 +140,3 @@ var runBookmarklet = function() {
   };
 
 }(window, window.document, window.jQuery));
-
-
-/*==========  EOF Bookmarklet Code. Below is for Codepen demo. ==========*/
-
-};
-runBookmarklet();
-window.jQuery('#prefill').on('click', runBookmarklet);
-
