@@ -13,6 +13,10 @@
   _rand = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
+    
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
 
   // Load FakerJS library
   $.getScript('//cdnjs.cloudflare.com/ajax/libs/Faker/0.7.2/MinFaker.js', function() {
@@ -39,6 +43,7 @@
     this.password  = 'pass1234';
 
     this.name      = faker.Name.findName();
+    this.title     = toTitleCase(faker.Lorem.words(_rand(3,6)).join(' '));
 
     this.address1  = faker.Address.streetAddress();
     this.city      = faker.Address.city();
@@ -76,7 +81,7 @@
   };
 
   FormData.prototype.randomizeParagraph = function(el) {
-    $(el).val(this.faker.Lorem.sentence(5));
+    $(el).val(this.faker.Lorem.sentence(10, true, 20));
   };
 
   FormData.prototype.randomizeCheckbox = function(el) {
