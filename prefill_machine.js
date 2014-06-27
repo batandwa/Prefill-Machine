@@ -15,11 +15,9 @@
   };
 
   // Load FakerJS library
-  $.getScript('//cdnjs.cloudflare.com/ajax/libs/Faker/0.7.2/MinFaker.js')
-    .done(function() {
+  $.getScript('//cdnjs.cloudflare.com/ajax/libs/Faker/0.7.2/MinFaker.js', function() {
       fillForm();
-    })
-    .fail(function() {
+    }, function() {
       win.console.error('ERROR: FakerJS not loaded!');
     });
 
@@ -62,9 +60,9 @@
     len  = $el.find('option').length - 1;
 
     $el.children('option')
-      .prop('selected', false)
+      .attr('selected', false)
       .eq( _rand( 1,len + 1 ) )
-      .prop('selected', true);
+      .attr('selected', true);
   };
 
   FormData.prototype.randomizeRadio = function(radios) {
@@ -72,9 +70,9 @@
     len    = radios.length;
 
     radios
-      .prop('checked', false)
+      .attr('checked', false)
       .eq( _rand( 0, len - 1 ) )
-      .prop('checked', true);
+      .attr('checked', true);
   };
 
   FormData.prototype.randomizeParagraph = function(el) {
@@ -84,10 +82,10 @@
   FormData.prototype.randomizeCheckbox = function(el) {
     var $el  = $(el);
 
-    $el.prop('checked', false);
+    $el.attr('checked', false);
 
     if (_rand( 0,1 ) === 0) {
-      $el.prop('checked', true);
+      $el.attr('checked', true);
     }
   };
 
@@ -114,6 +112,9 @@
     $('#zip').val(data.zip);
     $('#pw').val(data.password);
     $('#pw-repeat').val(data.password);
+    $('#edit-title').val(data.password);
+      
+      console.log(data);
 
     data.randomizeRadio($('[name="radio-choice"]'));
 
@@ -140,3 +141,4 @@
   };
 
 }(window, window.document, window.jQuery));
+
