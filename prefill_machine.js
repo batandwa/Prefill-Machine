@@ -34,16 +34,20 @@
 
     this.faker     = faker;
 
+    this.title     = toTitleCase(faker.Lorem.words(_rand(3,6)).join(' '));
+    this.name      = faker.Name.firstName();
+    this.surname   = faker.Name.lastName();
+    this.fullName   = this.name + ' ' + this.surname;
+
     this.randomWord = faker.Internet.domainWord();
 
-    this.username  = 'fake_' + this.randomWord;
+    this.username  = 'fake_' + this.name;
     this.username  += _rand(100,9999);
+    this.email     = faker.Internet.email();
+    this.phoneNumber = faker.PhoneNumber.phoneNumber();
 
     // set this value to your password specifications
-    this.password  = 'pass1234';
-
-    this.name      = faker.Name.findName();
-    this.title     = toTitleCase(faker.Lorem.words(_rand(3,6)).join(' '));
+    this.password  = this.username;
 
     this.address1  = faker.Address.streetAddress();
     this.city      = faker.Address.city();
@@ -105,21 +109,33 @@
   fillForm = function() {
     data = new FormData(win.Faker);
 
-    $('#name').val(data.name);
-    $('#username').val(data.username);
-    $('#cc').val(data.cc);
-    $('#exp-1').val(data.exp1);
-    $('#exp-2').val(data.exp2);
-    $('#cvv').val(data.cvv);
-    $('#address').val(data.address1);
-    $('#city').val(data.city);
-    $('#state').val(data.state);
-    $('#zip').val(data.zip);
-    $('#pw').val(data.password);
-    $('#pw-repeat').val(data.password);
-    $('#edit-title').val(data.password);
-      
-      console.log(data);
+    $('[name*=name]').val(data.name);
+    $('[name*=surname]').val(data.surname);
+    $('[name*=last_name]').val(data.surname);
+    $('[name*=username]').val(data.username);
+    $('[name*=cc]').val(data.cc);
+    $('[name*=exp1]').val(data.exp1);
+    $('[name*=exp2]').val(data.exp2);
+    $('[name*=cvv]').val(data.cvv);
+    $('[name*=address]').val(data.address1);
+    $('[name*=mail]').val(data.email);
+    $('[name*=city]').val(data.city);
+    $('[name*=province]').val(data.state);
+    $('[name*=state]').val(data.state);
+    $('[name*=province]').val(data.state);
+    $('[name*=zip]').val(data.zip);
+    $('[name*=pw]').val(data.password);
+    $('[type*=password]').val(data.password);
+    $('[name*=pw-repeat]').val(data.password);
+    $('[name*=pw-again]').val(data.password);
+    $('[name*=password-repeat]').val(data.password);
+    $('[name*=password-again]').val(data.password);
+    $('[name*=title]').val(data.title);
+    $('[name*=contactnumber]').val(data.phoneNumber);
+    $('[name*=contact_number]').val(data.phoneNumber);
+    $('[name*=fullname]').val(data.fullName);
+    $('[name*=full_name]').val(data.fullName);
+    $('[name*=phone]').val(data.phoneNumber);
 
     data.randomizeRadio($('[name="radio-choice"]'));
 
