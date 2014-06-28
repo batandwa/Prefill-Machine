@@ -3,7 +3,7 @@ Prefill-Machine
 
 A bookmarklet that automatically fills form fields based on their names.
 
-Inspired (stolen) from [Adam Lichtenstein's](https://twitter.com/seeThroughTrees) [article on CSS-Tricks](http://css-tricks.com/prefilling-forms-custom-bookmarklet/)
+Inspired by (or stolen from) [Adam Lichtenstein's](https://twitter.com/seeThroughTrees) [article on CSS-Tricks](http://css-tricks.com/prefilling-forms-custom-bookmarklet/)
 
 
 Bookmarklet
