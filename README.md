@@ -13,6 +13,6 @@ Bookmarklet
 
 Uses
 ====
-(Faker.js)[https://github.com/marak/Faker.js/] - A Javascript library that generates sample data.
+[Faker.js](https://github.com/marak/Faker.js/) - A Javascript library that generates sample data.
 
 ...and other technicques mentioned in Adam Lichtenstein's article.
