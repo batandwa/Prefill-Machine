@@ -120,88 +120,82 @@
   fillForm = function() {
     data = new FormData(win.Faker);
 
-    $('[name*=name]').val(data.name);
-    $('[name*=surname]').val(data.surname);
-    $('[name*=last_name]').val(data.surname);
-    $('[name*=username]').val(data.username);
-    $('[name*=cc]').val(data.cc);
-    $('[name*=exp1]').val(data.exp1);
-    $('[name*=exp2]').val(data.exp2);
-    $('[name*=cvv]').val(data.cvv);
-    $('[name*=address]').val(data.address1);
-    $('[name*=address2]').val(data.address1);
-    $('[name*=street_address]').val(data.address1);
-    $('[name*=streetaddress]').val(data.address1);
-    $('[name*=thoroughfare]').val(data.address1);
-    $('[name*=suburb]').val(data.address2);
-    $('[name*=address2]').val(data.address2);
-    $('[name*=secondary_address]').val(data.address2);
-    $('[name*=secondaryaddress]').val(data.address2);
-    $('[name*=premise]').val(data.address2);
-    $('[name*=mail]').val(data.email);
-    $('[name*=city]').val(data.city);
-    $('[name*=locality]').val(data.city);
-    $('[name*=province]').val(data.state);
-    $('[name*=state]').val(data.state);
-    $('[name*=province]').val(data.state);
-    $('[name*=administrative_area]').val(data.state);
-    $('[name*=zip]').val(data.zip);
-    $('[name*=postalcode]').val(data.zip);
-    $('[name*=postal_code]').val(data.zip);
-    $('[name*=pw]').val(data.password);
-    $('[type*=password]').val(data.password);
-    $('[name*=pw-repeat]').val(data.password);
-    $('[name*=pw-again]').val(data.password);
-    $('[name*=password-repeat]').val(data.password);
-    $('[name*=password-again]').val(data.password);
-    $('[name*=title]').val(data.title);
-    $('[name*=contactnumber]').val(data.phoneNumber);
-    $('[name*=contact_number]').val(data.phoneNumber);
-    $('[name*=fullname]').val(data.fullName);
-    $('[name*=full_name]').val(data.fullName);
-    $('[name*=phone]').val(data.phoneNumber);
-    $('[name*=company]').val(data.company);
-    $('[name*=client]').val(data.company);    
-    $('[name*=attention]').val(data.name);  
+    $('[name*=name]').not(':hidden').val(data.name);
+    $('[name*=surname]').not(':hidden').val(data.surname);
+    $('[name*=last_name]').not(':hidden').val(data.surname);
+    $('[name*=username]').not(':hidden').val(data.username);
+    $('[name*=cc]').not(':hidden').val(data.cc);
+    $('[name*=exp1]').not(':hidden').val(data.exp1);
+    $('[name*=exp2]').not(':hidden').val(data.exp2);
+    $('[name*=cvv]').not(':hidden').val(data.cvv);
+    $('[name*=address]').not(':hidden').val(data.address1);
+    $('[name*=address2]').not(':hidden').val(data.address1);
+    $('[name*=street_address]').not(':hidden').val(data.address1);
+    $('[name*=streetaddress]').not(':hidden').val(data.address1);
+    $('[name*=thoroughfare]').not(':hidden').val(data.address1);
+    $('[name*=suburb]').not(':hidden').val(data.address2);
+    $('[name*=address2]').not(':hidden').val(data.address2);
+    $('[name*=secondary_address]').not(':hidden').val(data.address2);
+    $('[name*=secondaryaddress]').not(':hidden').val(data.address2);
+    $('[name*=premise]').not(':hidden').val(data.address2);
+    $('[name*=mail]').not(':hidden').val(data.email);
+    $('[name*=city]').not(':hidden').val(data.city);
+    $('[name*=locality]').not(':hidden').val(data.city);
+    $('[name*=province]').not(':hidden').val(data.state);
+    $('[name*=state]').not(':hidden').val(data.state);
+    $('[name*=province]').not(':hidden').val(data.state);
+    $('[name*=administrative_area]').not(':hidden').val(data.state);
+    $('[name*=zip]').not(':hidden').val(data.zip);
+    $('[name*=postalcode]').not(':hidden').val(data.zip);
+    $('[name*=postal_code]').not(':hidden').val(data.zip);
+    $('[name*=pw]').not(':hidden').val(data.password);
+    $('[type*=password]').not(':hidden').val(data.password);
+    $('[name*=pw-repeat]').not(':hidden').val(data.password);
+    $('[name*=pw-again]').not(':hidden').val(data.password);
+    $('[name*=password-repeat]').not(':hidden').val(data.password);
+    $('[name*=password-again]').not(':hidden').val(data.password);
+    $('[name*=title]').not(':hidden').val(data.title);
+    $('[name*=contactnumber]').not(':hidden').val(data.phoneNumber);
+    $('[name*=contact_number]').not(':hidden').val(data.phoneNumber);
+    $('[name*=fullname]').not(':hidden').val(data.fullName);
+    $('[name*=full_name]').not(':hidden').val(data.fullName);
+    $('[name*=phone]').not(':hidden').val(data.phoneNumber);
+    $('[name*=company]').not(':hidden').val(data.company);
+    $('[name*=client]').not(':hidden').val(data.company);
+    $('[name*=attention]').not(':hidden').val(data.name);
 
     data.randomizeRadio($('[name="radio-choice"]'));
 
     // Randomize all select boxes
-    $('select').each(function() {
+    $('select').not(':hidden').each(function() {
       data.randomizeSelect(this);
     });
 
     // Randomize all checkboxes
-    $('input[type="checkbox"').each(function() {
+    $('input[type="checkbox"').not(':hidden').each(function() {
       data.randomizeCheckbox(this);
     });
 
     // Randomize all textareas
-    $('textarea').each(function() {
+    $('textarea').not(':hidden').each(function() {
       data.randomizeParagraph(this);
     });
 
     // Randomize all emails
-    $('input[type="email"').each(function() {
+    $('input[type="email"').not(':hidden').each(function() {
       data.randomizeEmail(this);
     });
       
     // Randomize quantity amounts
-    $('[name*=quantity]').each(function() {
+    $('[name*=quantity]').not(':hidden').each(function() {
       data.randomizeNumber(this, 0, 100);
     });
       
     // Randomize quantity amounts
-    $('[name*=description]').each(function() {
+    $('[name*=description]').not(':hidden').each(function() {
       data.randomizePhrase(this);
     });
 
   };
 
 }(window, window.document, window.jQuery));
-
-
-/*
-Exception: missing ) after argument list
-@Scratchpad/2:187
-*/
