@@ -50,6 +50,7 @@
     this.password  = this.username;
 
     this.address1  = faker.Address.streetAddress();
+    this.address2  = faker.Address.secondaryAddress();
     this.city      = faker.Address.city();
     this.state     = faker.random.br_state_abbr();
     this.zip       = faker.Address.zipCode();
@@ -59,6 +60,8 @@
     this.exp1      = _rand(1,12);
     this.exp2      = _rand(14,22);
     this.cvv       = _rand(100,999);
+      
+    this.company   = faker.Company.companyName();
 
   };
 
@@ -102,6 +105,14 @@
     $(el).val('chriscoyier+' + this.randomWord + '@gmail.com');
   };
 
+  FormData.prototype.randomizeNumber = function(el, min, max) {
+    $(el).val(_rand(min, max));
+  };
+
+  FormData.prototype.randomizePhrase = function(el, min, max) {
+    $(el).val(this.faker.Lorem.words(_rand(3,6)).join(' '));
+  };
+
 
 
   /*==========  FILL IN THE FORM  ==========*/
@@ -118,12 +129,25 @@
     $('[name*=exp2]').val(data.exp2);
     $('[name*=cvv]').val(data.cvv);
     $('[name*=address]').val(data.address1);
+    $('[name*=address2]').val(data.address1);
+    $('[name*=street_address]').val(data.address1);
+    $('[name*=streetaddress]').val(data.address1);
+    $('[name*=thoroughfare]').val(data.address1);
+    $('[name*=suburb]').val(data.address2);
+    $('[name*=address2]').val(data.address2);
+    $('[name*=secondary_address]').val(data.address2);
+    $('[name*=secondaryaddress]').val(data.address2);
+    $('[name*=premise]').val(data.address2);
     $('[name*=mail]').val(data.email);
     $('[name*=city]').val(data.city);
+    $('[name*=locality]').val(data.city);
     $('[name*=province]').val(data.state);
     $('[name*=state]').val(data.state);
     $('[name*=province]').val(data.state);
+    $('[name*=administrative_area]').val(data.state);
     $('[name*=zip]').val(data.zip);
+    $('[name*=postalcode]').val(data.zip);
+    $('[name*=postal_code]').val(data.zip);
     $('[name*=pw]').val(data.password);
     $('[type*=password]').val(data.password);
     $('[name*=pw-repeat]').val(data.password);
@@ -136,6 +160,9 @@
     $('[name*=fullname]').val(data.fullName);
     $('[name*=full_name]').val(data.fullName);
     $('[name*=phone]').val(data.phoneNumber);
+    $('[name*=company]').val(data.company);
+    $('[name*=client]').val(data.company);    
+    $('[name*=attention]').val(data.name);  
 
     data.randomizeRadio($('[name="radio-choice"]'));
 
@@ -158,8 +185,23 @@
     $('input[type="email"').each(function() {
       data.randomizeEmail(this);
     });
+      
+    // Randomize quantity amounts
+    $('[name*=quantity]').each(function() {
+      data.randomizeNumber(this, 0, 100);
+    });
+      
+    // Randomize quantity amounts
+    $('[name*=description]').each(function() {
+      data.randomizePhrase(this);
+    });
 
   };
 
 }(window, window.document, window.jQuery));
 
+
+/*
+Exception: missing ) after argument list
+@Scratchpad/2:187
+*/
