@@ -163,6 +163,7 @@
     $('[name*=company]').not(':hidden').val(data.company);
     $('[name*=client]').not(':hidden').val(data.company);
     $('[name*=attention]').not(':hidden').val(data.name);
+    $('[name*=subject]').not(':hidden').val(data.name);
 
     data.randomizeRadio($('[name="radio-choice"]'));
 
@@ -172,17 +173,12 @@
     });
 
     // Randomize all checkboxes
-    $('input[type="checkbox"').not(':hidden').each(function() {
+    $('input[type="checkbox"]').not(':hidden').each(function() {
       data.randomizeCheckbox(this);
     });
 
-    // Randomize all textareas
-    $('textarea').not(':hidden').each(function() {
-      data.randomizeParagraph(this);
-    });
-
     // Randomize all emails
-    $('input[type="email"').not(':hidden').each(function() {
+    $('input[type="email"]').not(':hidden').each(function() {
       data.randomizeEmail(this);
     });
       
@@ -194,6 +190,16 @@
     // Randomize quantity amounts
     $('[name*=description]').not(':hidden').each(function() {
       data.randomizePhrase(this);
+    });
+      
+    // Randomize quantity amounts
+    $('[name*=subject]').not(':hidden').each(function() {
+      data.randomizePhrase(this);
+    });
+
+    // Randomize all textareas
+    $('textarea').not(':hidden').each(function() {
+      data.randomizeParagraph(this);
     });
 
   };
