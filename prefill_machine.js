@@ -1,5 +1,4 @@
 (function(win, doc, $) {
-
   'use strict';
 
   // Don't run script if jQuery isn't loaded
@@ -25,11 +24,15 @@
       win.console.error('ERROR: FakerJS not loaded!');
     });
 
-
-
-
-  /*==========  CREATE DATA OBJECT  ==========*/
-
+  /**
+   * The data that will be used for substitutions
+   *
+   * @author  Batandwa Colani
+   * @date    2014-07-31
+   * @version 1
+   *
+   * @param   void
+   */
   FormData = function(faker) {
 
     this.faker     = faker;
@@ -46,7 +49,7 @@
     this.email     = faker.Internet.email();
     this.phoneNumber = faker.PhoneNumber.phoneNumber();
 
-    // set this value to your password specifications
+    // Set this value to your password specifications
     this.password  = this.username;
 
     this.address1  = faker.Address.streetAddress();
@@ -64,7 +67,6 @@
     this.company   = faker.Company.companyName();
 
   };
-
 
   FormData.prototype.randomizeSelect = function(el) {
     var $el = $(el);
@@ -102,7 +104,7 @@
   };
 
   FormData.prototype.randomizeEmail = function(el) {
-    $(el).val('chriscoyier+' + this.randomWord + '@gmail.com');
+    $(el).val(this.faker.Internet.email());
   };
 
   FormData.prototype.randomizeNumber = function(el, min, max) {
@@ -113,10 +115,15 @@
     $(el).val(this.faker.Lorem.words(_rand(3,6)).join(' '));
   };
 
-
-
-  /*==========  FILL IN THE FORM  ==========*/
-
+  /**
+   * Fill-in the form
+   *
+   * @author  Batandwa Colani
+   * @date    2014-07-31
+   * @version 1
+   *
+   * @return  void
+   */
   fillForm = function() {
     data = new FormData(win.Faker);
 
@@ -160,6 +167,7 @@
     $('[name*=fullname]').not(':hidden').val(data.fullName);
     $('[name*=full_name]').not(':hidden').val(data.fullName);
     $('[name*=phone]').not(':hidden').val(data.phoneNumber);
+    $('[name*=fax]').not(':hidden').val('086 ' + data.phoneNumber);
     $('[name*=company]').not(':hidden').val(data.company);
     $('[name*=client]').not(':hidden').val(data.company);
     $('[name*=attention]').not(':hidden').val(data.name);
